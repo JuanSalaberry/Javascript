@@ -44,7 +44,7 @@ let valorRyzen3 = 300000;
 let valorRyzen4 = 375000;
 let valorRyzen5 = 410000;
 
-// Utilizo el switch para calcular el costo total de lo pedido por el usuario
+// Utilizo calculadora para calcular el costo total de lo pedido por el usuario
 let costototal = 0;
 
 switch (monitor.toLowerCase()) {
