@@ -1,100 +1,48 @@
-alert("Bienvenido a Lelsi Gaming, la página donde podrás seleccionar los productos que quieres utilizar para armar tu próxima computadora");
+const notebooks = [
+  {id:1, procesador: 'Ryzen 3', precio:850000 },
+  {id:2, procesador: 'Ryzen 4', precio:1000000 },
+  {id:3, procesador: 'Ryzen 5', precio:1200000 },
+  {id:4, procesador: 'Ryzen 3', precio: 880000 },
+  {id:5, procesador: 'Ryzen 4', precio:940000 },
+  {id:6, procesador: 'Ryzen 5', precio:1100000 },
+  {id:7, procesador: 'Ryzen 3', precio:830000 },
+  {id:8, procesador: 'Ryzen 3', precio:895000 },
+  {id:9, procesador: 'Ryzen 4', precio:930000 },
+  {id:10, procesador: 'Ryzen 5', precio:1100000 },
+  {id:11, procesador: 'Ryzen 3', precio:830000 },
+  {id:12, procesador: 'Ryzen 4', precio:940000 },
+  {id:13, procesador: 'Ryzen 5', precio:1250000 },
+  {id:14, procesador: 'Ryzen 3', precio:890000 },
+  {id:15, procesador: 'Ryzen 4', precio:990000 },
+];
 
-let nombre = prompt("Ingresa tu nombre");
-console.log(nombre);
+console.log(notebooks);
 
-let apellido = prompt("Ingresa tu apellido");
-console.log(apellido);
+alert("Tenemos para ofrecerte notebooks, las cuales ya estan armadas con sus determinados componentes, ingresa los datos para darte las mejores opciones:")
 
-let documento = prompt("Ingresa tu DNI");
-console.log(documento);
+const tipoProcesador= prompt("Ingresa el tipo de procesador que queres usar contamos con:Ryzen 3, Ryzen 4 y Ryzen 5")
+console.log(tipoProcesador);
+const precioNot= prompt("Ingresa el dinero maximo que estas dispuesto a invertir (rango min:800000 - rango max:1250000")
+console.log(precioNot);
 
-let edad = prompt("Ingresa tu Edad");
-console.log(edad);
+const precioNum = parseInt(precioNot);
 
-let monitor = prompt("Seleccione la marca deseada de monitor: HP, Lenovo, Samsung");
-console.log(monitor);
+const opcionesDisponibles = [];
 
-let teclado = prompt("Seleccione marca deseada de teclado: Antryx, HyperX, Ducky");
-console.log(teclado);
+// Filtrar las notebooks según el procesador y el precio máximo ingresado
+notebooks.forEach(notebook => {
+    if (notebook.procesador === tipoProcesador && notebook.precio <= precioNum) {
+        opcionesDisponibles.push(notebook);
+    }
+});
 
-let mouse = prompt("Seleccione su preferencia de mouse: Logitech, Pulsar, Razer");
-console.log(mouse);
-
-let procesador = prompt("Seleccione procesador deseado: Ryzen3, Ryzen4, Ryzen5");
-console.log(procesador);
-
-// Valores Monitor
-let valorHP = 150000;
-let valorLenovo = 17500;
-let valorSamsung = 16000;
-
-// Valor Teclados
-let valorAntryx = 1300;
-let valorHyperX = 1800;
-let valorDucky = 2200;
-
-// Valor Mouse
-let valorLogitech = 32000;
-let valorPulsar = 38000;
-let valorRazer = 27000;
-
-// Valor Procesador
-let valorRyzen3 = 300000;
-let valorRyzen4 = 375000;
-let valorRyzen5 = 410000;
-
-// Utilizo calculadora para calcular el costo total de lo pedido por el usuario
-let costototal = 0;
-
-switch (monitor.toLowerCase()) {
-  case "hp":
-    costototal += valorHP;
-    break;
-  case "lenovo":
-    costototal += valorLenovo;
-    break;
-  case "samsung":
-    costototal += valorSamsung;
-    break;
+// Mostrar las opciones disponibles
+if (opcionesDisponibles.length > 0) {
+    console.log("Las notebooks disponibles que coinciden con tus criterios son:");
+    opcionesDisponibles.forEach(notebook => {
+        console.log(`ID: ${notebook.id}, Procesador: ${notebook.procesador}, Precio: $${notebook.precio}`);
+    });
+} else {
+    console.log("Lo sentimos, no hay notebooks disponibles que coincidan con tus criterios.");
 }
-
-switch (teclado.toLowerCase()) {
-  case "antryx":
-    costototal += valorAntryx;
-    break;
-  case "hyperx":
-    costototal += valorHyperX;
-    break;
-  case "ducky":
-    costototal += valorDucky;
-    break;
-}
-
-switch (mouse.toLowerCase()) {
-  case "logitech":
-    costototal += valorLogitech;
-    break;
-  case "pulsar":
-    costototal += valorPulsar;
-    break;
-  case "razer":
-    costototal += valorRazer;
-    break;
-}
-
-switch (procesador.toLowerCase()) {
-  case "ryzen3":
-    costototal += valorRyzen3;
-    break;
-  case "ryzen4":
-    costototal += valorRyzen4;
-    break;
-  case "ryzen5":
-    costototal += valorRyzen5;
-    break;
-}
-
-// Mostrar el costo total al usuario
-alert(`El costo total de tu próxima computadora es de $${costototal} pesos`);
 
